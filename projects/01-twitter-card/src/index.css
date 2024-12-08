@@ -31,11 +31,29 @@ body{
     border-radius: 1000px;
 }
 .follow{
+    cursor: pointer;
     margin-left: 16px;
     border: 0px;
     border-radius: 999px;
     padding: 6px 16px;
     font-weight: bold;
+}
+.following{
+    cursor: pointer;
+    margin-left: 16px;
+    border: 0px;
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-weight: bold;
+    background-color: rgb(249, 78, 78);
+    color: white;
+
+}
+
+.follow:hover, .following:hover{
+    transition: 0.5s;
+    background-color: #000000;
+    color: white;
 }
 .App{
     display: flex;
