@@ -47,16 +47,36 @@ body{
     font-weight: bold;
     background-color: rgb(249, 78, 78);
     color: white;
+    width: 100px;
 
 }
 
-.follow:hover, .following:hover{
+.follow:hover{
     transition: 0.5s;
     background-color: #000000;
     color: white;
+}
+.following:hover{
+    transition: 0.3s;
+    background-color: rgba(250, 71, 71, 0.17);
+    border: 1px red solid;
+    color: red;
+
 }
 .App{
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+.text-follow{
+    display: block;
+}
+.text-unfollow{
+    display: none;
+}
+.following:hover .text-unfollow{
+    display: block;
+}
+.following:hover .text-follow{
+    display: none;
 }
