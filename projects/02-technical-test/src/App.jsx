@@ -5,7 +5,19 @@ export function App(){
     useEffect(() =>{
         fetch(CAT_ENDPOINT_RANDOM_FACT)
         .then(res => res.json())
-        .then(data => setFact(data.fact))
+        .then(data => {
+            const {fact} = data
+            setFact(fact)
+            
+            
+            
+            const firstsWords = fact.split(' ', 3).join(' ')
+            
+            //Another way to take the first 3 words 
+            // const firstsWords = fact.split(' ').slice(0, 3).join(' ')
+
+            console.log(firstsWords)
+        })
     }, [])
     return(
         <p>{fact}</p>
