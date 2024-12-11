@@ -21,9 +21,9 @@ export function App() {
             })
     }, [])
     return (
-        <main>
-            <p>{fact}</p>
-            <img src={image}/>
+        <main className="catContainer">
+            <h1 className="catFact">{fact}</h1>
+            <img src={image} className="catImage"/>
         </main>
     )
 }

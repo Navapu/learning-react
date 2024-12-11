@@ -24,10 +24,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background-color: #222;
 }
 
 h1 {
@@ -93,4 +90,22 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+.catContainer{
+  margin: 0;
+  width: 100%;
+  display: flex;
+  place-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  
+}
+.catFact{
+  font-size: 18px;
+  color: white;
+}
+.catImage{
+  width: 400px;
+  height: 400px;
 }
