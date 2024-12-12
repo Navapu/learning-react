@@ -1,29 +1,28 @@
 import { useEffect, useState } from "react"
-const CAT_ENDPOINT_RANDOM_FACT = 'https://catfact.ninja/fact'
+import { getRandomFact } from "./services/fact"
 export function App() {
     const [fact, setFact] = useState()
     const [image, setImage] = useState()
     useEffect(() => {
-        fetch(CAT_ENDPOINT_RANDOM_FACT)
-            .then(res => res.json())
-            .then(data => {
-                const { fact } = data
-                setFact(fact)
-
-                const firstsWords = fact.split(' ', 3).join(' ')
-
-                //Another way to take the first 3 words
-                //Another way to take the first 3 words   
-                // const firstsWords = fact.split(' ').slice(0, 3).join(' ')
-
-                setImage(`https://cataas.com/cat/says/${firstsWords}?size=50&color=red`)
-                    
-            })
+       getRandomFact().then(setFact)
     }, [])
+
+    useEffect(() => {
+        if (fact) {
+            const firstsWords = fact.split(' ', 3).join(' ')
+            setImage(`https://cataas.com/cat/says/${firstsWords}?size=50&color=red`)
+        }
+
+    }, [fact])
+    
+    const getFact = () => {
+        getRandomFact().then(setFact)
+    }
     return (
         <main className="catContainer">
             <h1 className="catFact">{fact}</h1>
-            <img src={image} className="catImage"/>
+            <button onClick={getFact}>Get a new Fact</button>
+            <img src={image} className="catImage" />
         </main>
     )
 }
