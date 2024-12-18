@@ -1,7 +1,18 @@
 import { useEffect, useState } from "react"
 import { getRandomFact } from "./services/fact"
 export function App() {
+    const useCatFact = () => {
+        const [fact, setFact] = useState()
+        
+        const refreshFact = () =>{
+            getRandomFact().then(setFact)
+        }
 
+        useEffect(refreshFact, [])
+
+        return {fact, refreshFact }
+
+    }
     function useCatImage({fact}) {
         const [image, setImage] = useState()
 
@@ -14,19 +25,10 @@ export function App() {
         }, [fact])
         return image
     }
-
-    const [fact, setFact] = useState()
-
-    useEffect(() => {
-        getRandomFact().then(setFact)
-    }, [])
-
-    
-
     const getFact = () => {
-        getRandomFact().then(setFact)
+        refreshFact()
     }
-
+    const {fact, refreshFact} = useCatFact()
     const imageUrl = useCatImage({fact})
     return (
         <main className="catContainer">
